@@ -15,7 +15,8 @@ coherence        = "MESI"
 replacement      = "lru"
 latency          = "1000ps"
 #exe              = "/home/plavin3/modsim22/AMG-master/test/amg"
-exe              = "/usr/bin/w"
+#exe              = "/usr/bin/w"
+exe              = "hello/hello"
 args             = []
 
 arielParams   = {
@@ -105,13 +106,13 @@ mklink((l2, "low_network_0", latency),
 #core.enableStatistics(["model_time"])
 #core.enableAllStatistics({})
 cacheStats = ["GetS_recv", "TotalEventsReceived", "GetSResp_recv"]
-#l1.enableStatistics(copy(cacheStats))
-#l2.enableStatistics(copy(cacheStats))
+l1.enableStatistics(copy(cacheStats))
+l2.enableStatistics(copy(cacheStats))
 
+core.enableStatistics(["read_requests", "write_requests"])
 
-
-sst.setProgramOption("stopAtCycle", "200us")
-#sst.setStatisticLoadLevel(10)
+#sst.setProgramOption("stopAtCycle", "200us")
+sst.setStatisticLoadLevel(2)
 #sst.enableAllStatisticsForAllComponents()
 
 sst.setStatisticOutput("sst.statOutputCSV", {"filepath": "stats.csv", "separator" : ", "} )
