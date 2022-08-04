@@ -16,7 +16,8 @@ replacement      = "lru"
 latency          = "1000ps"
 #exe              = "/home/plavin3/modsim22/AMG-master/test/amg"
 #exe              = "/usr/bin/w"
-exe              = "hello/hello"
+#exe              = "hello/hello"
+exe = "/bin/ls"
 args             = []
 
 arielParams   = {
@@ -39,7 +40,8 @@ for i in range(len(args)):
 
 l1Params = {
       "cache_frequency"       : freq,
-      "cache_size"            : "64KiB",
+      "cache_size"            : "1KiB",
+      #"cache_size"            : "64KiB",
       "associativity"         : "4",
       "access_latency_cycles" : "2",
       "L1"                    : "1",
@@ -60,7 +62,8 @@ l2Params = {
       #"prefetcher"            : "cassini.StridePrefetcher",
       "debug"                 : "0",
       "L1"                    : "0",
-      "cache_size"            : "8MiB",
+      #"cache_size"            : "8MiB",
+      "cache_size"            : "1KiB",
       "mshr_latency_cycles"   : "5",
 }
 
@@ -69,6 +72,7 @@ memctrlParams = {
       "addr_range_end"   : 8*1024**3 - 1,
       "clock"   : freq,
       "backing" : "none",
+      "customCmdHandler" : "memHierarchy.defCustomCmdHandler"
 }
 
 dramsim3Params = {
